@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <p>تعداد کل کارگرها:</p>
+        <p id="workers-number">0</p>
+      </div>
+      <button onclick="addWorker()">اضافه کردن کارگر</button>
+    </div>
+    <table id="the-table">
+      <tr>
+        <td>روز هفته</td>
+        <td>شـنبــه</td>
+        <td>یکـشنبه</td>
+        <td>دوشنبـه</td>
+        <td>سـه‌شنبه</td>
+        <td>چهارشنبه</td>
+        <td>پنج‌شنبه</td>
+        <td>جـمـعـه</td>
+      </tr>
+      <tr>
+        <td>تعداد مورد نیاز</td>
+        <td id="sa-need"></td>
+        <td id="su-need"></td>
+        <td id="mo-need"></td>
+        <td id="tu-need"></td>
+        <td id="we-need"></td>
+        <td id="th-need"></td>
+        <td id="fr-need"></td>
+      </tr>
+      <tr>
+        <td>تعداد فعلی</td>
+        <td id="sa-workers">0</td>
+        <td id="su-workers">0</td>
+        <td id="mo-workers">0</td>
+        <td id="tu-workers">0</td>
+        <td id="we-workers">0</td>
+        <td id="th-workers">0</td>
+        <td id="fr-workers">0</td>
+      </tr>
+      <tr>
+        <td>کمبود/اضافی</td>
+        <td id="sa-extra"></td>
+        <td id="su-extra"></td>
+        <td id="mo-extra"></td>
+        <td id="tu-extra"></td>
+        <td id="we-extra"></td>
+        <td id="th-extra"></td>
+        <td id="fr-extra"></td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
