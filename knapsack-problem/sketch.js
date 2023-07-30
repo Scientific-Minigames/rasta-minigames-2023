@@ -2,12 +2,40 @@ let bg;
 let stack;
 let items;
 
+let rastaLogo;
+let kamvaLogo;
+
 let ITEM_WIDTH = 50;
 let ITEM_HEIGHT = 10;
 let STACK_SIZE = 40;
 
+let colors = [
+  '#819f71',
+  '#49e30b',
+  '#a0f207',
+  '#b1123a',
+  '#825112',
+  '#396f34',
+  '#f56505',
+  '#0003eb',
+  '#53ab80',
+  '#7cbe58',
+  '#6c4332',
+  '#a92432',
+  '#6ba986',
+  '#f09097',
+  '#bacf3e',
+  '#dfee76',
+  '#9c3e7b',
+  '#edfd5a',
+  '#3369ca',
+  ]
+
+
 function preload() {
   bg = loadImage('../assets/backgrounds/01.jpg');
+  kamvaLogo = loadImage('../assets/logos/kamva.png');
+  rastaLogo = loadImage('../assets/logos/rasta.png');
 }
 
 function setup() {
@@ -21,6 +49,10 @@ function setup() {
     [3, 5],
     [7, 30],
   ];
+  for (let i=0; i < items.length; i++) {
+    items[i].push(colors[i]);
+  }
+
   createCanvas(bg.width, bg.height);
 }
 
@@ -28,55 +60,73 @@ function draw() {
   background(255);
   tint(255, 150);
   image(bg, 0, 0, width, height);
+  showDottedLines();
   showItems();
   showStack();
   showText();
+  showLogos();
 }
 
-function addToStack(height, value) {
+function showDottedLines() {
+  bot = height / 2;
+  setLineDash([5, 5]);
+  for (let i=0; i < 15; i++) {
+    y = bot - ITEM_HEIGHT * i;
+    strokeWeight((i % 5 == 0)? 1.5: 0.25);
+    line(0 + 30, y, width - 10, y);
+    if (i % 5 == 0) {
+      text(i, 15, y + 4);
+    }
+  }
+  setLineDash([]);
+}
+
+function addToStack(item) {
   
-  if (getTotal()[0] + height > STACK_SIZE) {
+  if (getTotal()[0] + item[0] > STACK_SIZE) {
     return false;
   }
-  stack.push([height, value]);
+  stack.push(item);
   return true;
 }
 
-function addToItems(height, value) {
+function addToItems(item) {
   for (let i=0; i < items.length; i++) {
     if (items[i] == null) {
-      items[i] = [height, value];
+      items[i] = item;
       return;
     }
   }
 }
 
 function showItems() {
-  spacing = (0.7 * width - items.length * 50) / (items.length + 1);
+  spacing = (width - items.length * 50) / (items.length + 1);
   for (let i=0;i<items.length; i++) {
     if (items[i] == null) continue;
-    showItem(...items[i], spacing + i * (spacing + ITEM_WIDTH), height/2);
+    showVerticalItem(...items[i], spacing + i * (spacing + ITEM_WIDTH), height/2);
   }
 }
 
 function showStack() {
-  strokeWeight(5);
-  rect(5/6 * width, (height - STACK_SIZE * ITEM_HEIGHT) / 2, ITEM_WIDTH, STACK_SIZE * ITEM_HEIGHT);
-  bot = (height + STACK_SIZE * ITEM_HEIGHT) / 2;
+  noFill();
+  strokeWeight(4);
+  rect(width / 2 - STACK_SIZE * ITEM_HEIGHT / 2 - 5, 0.6 * height - 5, STACK_SIZE * ITEM_HEIGHT + 10, ITEM_WIDTH + 10);
+  fill(0);
+  let left = width / 2 - STACK_SIZE * ITEM_HEIGHT / 2;
   for (let i=0; i < stack.length; i++) {
-    showItem(...stack[i], 5/6 * width, bot);
-    bot -= stack[i][0] * ITEM_HEIGHT;
+    showHorizontalItem(...stack[i], left, 0.6 * height);
+    left += stack[i][0] * ITEM_HEIGHT;
   }
 }
 
 function mouseClicked(){
-  if (mouseX < 0.7 * width) {
+  if (mouseY < 0.6 * height) {
     for (let i=0; i < items.length; i++) {
       if (items[i] == null) continue;
       let xc = spacing + i * (spacing + ITEM_WIDTH) + ITEM_WIDTH / 2;
       let yc = (height - items[i][0] * ITEM_HEIGHT) / 2
       if (checkInside(items[i][0], xc, yc)) {
-        if (addToStack(...items[i])) {
+        if (addToStack(items[i])) {
           console.log(i);
           items[i] = null;
           return;
@@ -84,32 +134,45 @@ function mouseClicked(){
       }
     }
   } else {
-    bot = (height + STACK_SIZE * ITEM_HEIGHT) / 2;
+    let left = width / 2 - STACK_SIZE * ITEM_HEIGHT / 2;
     for (let i=0; i < stack.length; i++) {
-      xc = 5/6 * width + ITEM_WIDTH / 2;
-      yc = bot - stack[i][0] * ITEM_HEIGHT / 2;
+      xc = left + stack[i][0] * ITEM_HEIGHT / 2;
+      yc = 0.6 * height + ITEM_WIDTH / 2;
       if (checkInside(stack[i][0], xc, yc)) {
-        console.log(i);
-        item = stack.splice(i, 1)[0];
-        addToItems(...item);
+        let item = stack.splice(i, 1)[0];
+        addToItems(item);
         return;
       }
-      bot -= stack[i][0] * ITEM_HEIGHT;
+      left += stack[i][0] * ITEM_HEIGHT;
     }
   }
 }
 
-function showItem(height, value, x, y) {
-  strokeWeight(3);
+function showVerticalItem(height, value, c, x, y) {
+  strokeWeight(1);
+  fill(color(c));
   rect(x, y - height * ITEM_HEIGHT, ITEM_WIDTH, ITEM_HEIGHT * height);
-  textSize(16);
+  fill(0);
+  textSize(23);
   textAlign(CENTER);
-  text(value + '$', x + ITEM_WIDTH/2, y - 5);
+  // text(value + '$', x + ITEM_WIDTH/2, y - ITEM_HEIGHT * height / 2 + 6);
+  text(value + '$', x + ITEM_WIDTH/2, y + 16);
 }
 
+function showHorizontalItem(height, value, c, x, y) {
+  strokeWeight(1);
+  fill(color(c));
+  rect(x, y, ITEM_HEIGHT * height, ITEM_WIDTH);
+  fill(0);
+  textSize(23);
+  textAlign(CENTER);
+  text(value + '$', x + ITEM_HEIGHT * height / 2, y + ITEM_WIDTH / 2 + 6);
+}
+
+
 function checkInside(height, x, y) {
-  if (Math.abs(mouseX - x) > ITEM_WIDTH/2) return false;
-  if (Math.abs(mouseY - y) > height * ITEM_HEIGHT / 2) return false;
+  if (Math.abs(mouseY - y) > ITEM_WIDTH/2) return false;
+  if (Math.abs(mouseX - x) > height * ITEM_HEIGHT / 2) return false;
   return true;
 }
 
@@ -124,6 +187,22 @@ function getTotal() {
 }
 
 function showText() {
-  text('Remaining volume:' + (STACK_SIZE - getTotal()[0]), width/2, 40);
-  text('Total value:' + getTotal()[1], width/2, 80);
+  textFont("bkamran");
+  textSize(50);
+  text('کوله پشتی', 200, height * 0.6 + ITEM_WIDTH / 2 + 15)
+  textSize(40);
+  text('ارزش کل: ' + getTotal()[1], width/2, height - 100);
+  text('ظرفیت باقیمانده: ' + (STACK_SIZE - getTotal()[0]), width/2, height - 60);
+  
+}
+
+
+function setLineDash(list) {
+  drawingContext.setLineDash(list);
+}
+
+function showLogos() {
+  noTint();
+  image(rastaLogo, 3.5, height - 101, 100, 100);
+  image(kamvaLogo, 110, height - 101, 100, 100);
 }
