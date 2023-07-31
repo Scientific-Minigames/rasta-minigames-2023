@@ -3,14 +3,20 @@
     src: url("../assets/fonts/vazir.ttf");
 }
 
-#container {
+body {
+    background-image: url("../assets/backgrounds/03.jpg");
+    background-size: cover;
     font-family: "vazir";
+}
+
+#container {
     max-width: 800px;
     margin: auto;
 }
 
 button {
     font-family: inherit;
+    font-size: inherit;
     border: 2px solid #777;
     padding: 5px;
     cursor: pointer;
@@ -38,4 +44,16 @@ tr:nth-child(4) {
 
 td {
     padding: 8px;
+}
+
+@media screen and (max-width: 600px) {
+    #container {
+        font-size: 10px;
+    }
+    td {
+        padding: 4px;
+    }
+    img {
+        width: 50px;
+    }
 }

@@ -17,7 +17,7 @@ days.forEach(day => {
 
 function addWorker() {
     workers++;
-    const newRow = table.insertRow(-1);
+    const newRow = table.insertRow(4);
     const newWorker = newRow.insertCell(-1)
     newWorker.innerHTML = `کارگر ${workers}`;
     newWorker.id = `worker-${workers}`
