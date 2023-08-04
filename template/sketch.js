@@ -1,3 +1,5 @@
+const aspectRatio = 9 / 16;
+
 let rastaLogo;
 let kamvaLogo;
 
@@ -14,11 +16,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowWidth * 0.75); // aspect ratio 4x3 works better in kamva
   textFont('bkamran'); // default font for our minigames
-}
-
-function draw() {
+  createCanvas(windowWidth, windowWidth * aspectRatio); // aspect ratio 4x3 works better in kamva
   showBackground();
   showLogos(width * 0.01, height * 0.8, height * 0.19);
   showDescription(width * 0.95, height * 0.75, 'قالب بازی‌ها', 'سیدعلی حسینی');
@@ -42,26 +41,30 @@ function showLogos(x, y, logoSize) {
 }
 
 function showDescription(x, y, gameName, developerName) {
-  textAlign(RIGHT);
+  textAlign(RIGHT, TOP);
   textFont(gameFont);
   h = 0;
   translate(x, y);
   // line(0, 0, 0, 100); uncomment this line for adjusting :))
   
   let nameSize = height * 0.07;
-  h += nameSize;
   textSize(nameSize);
   text(gameName, 0 - nameSize * 0.25, h);
+  h += nameSize;
 
   let schoolSize = height * 0.07;
-  h += schoolSize * 1.1;
   textSize(schoolSize);
   text('مدرسه تاسبتانه رستا ۱۴۰۲', 0 + schoolSize, h);
+  h += schoolSize * 1.1;
 
   let devSize = height * 0.05;
-  h += devSize * 1.1;
   textSize(devSize);
   text(`نام طراح: ${developerName}`, 0, h);
 
   translate(-x, -y);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowWidth * aspectRatio);
+  setup();
 }
