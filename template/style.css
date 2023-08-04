@@ -17,8 +17,3 @@ body::-webkit-scrollbar {
 canvas {
   display: block;
 }
-
-@font-face {
-  font-family: bkamran;
-  src: url(../assets/fonts/bkamran.otf);
-}
