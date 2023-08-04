@@ -1,7 +1,7 @@
-let bg;
 let stack;
 let items;
 
+let bg;
 let rastaLogo;
 let kamvaLogo;
 
