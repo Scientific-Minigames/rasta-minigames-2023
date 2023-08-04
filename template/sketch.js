@@ -28,7 +28,7 @@ function showBackground() {
   let transparency = 200;
   background(255);
   tint(255, transparency);
-  image(bgImage, 0, 0, width, height);
+  image(bgImage, 0, 0, width, height, 0, 0, bgImage.width, bgImage.height, COVER, CENTER);
   noTint();
 }
 
