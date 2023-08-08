@@ -1,0 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  background-image: url("../assets/backgrounds/03.jpg");
+  background-size: cover;
+  font-family: "vazir";
+}
