@@ -189,7 +189,7 @@ class GameMap {
             if (inpoint){
                 this.selected = true ;
                 this.selected_i = i ;
-                text(this.selected_i , 100 , 100);
+                //text(this.selected_i , 100 , 100);
             } 
 
             if (!inpoint && inmap && selectpoint){
