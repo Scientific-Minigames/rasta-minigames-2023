@@ -235,13 +235,15 @@ class GameMap {
             fill('black') ;
                 strokeWeight(1);
                 stroke('black');
+                drawingContext.setLineDash([2,2]);
                 line (this.points[i].x , this.points[i].y , this.xc , this.yc);
+                drawingContext.setLineDash([0,0]);
             }
             if (this.showDis) {
                 let val = sqrt(sq(this.points[i].x - this.xc) + sq(this.points[i].y - this.yc));
                 noStroke();
                 textSize(12);
-                text(floor(val) , (this.xc+this.points[i].x)/2 , (this.yc + this.points[i].y) / 2);
+                text(round(val/100 , 2) , (this.xc+this.points[i].x)/2 , (this.yc + this.points[i].y) / 2);
             }
 
             this.points[i].show(!this.addpoint , this.x , this.y , this.w , this.h) ;
@@ -249,7 +251,7 @@ class GameMap {
 
         this.calVal();
         if (this.dp.dp.value() == 'MODE 1') {
-            let v = 255*this.val/this.max1 ;
+            //let v = 255*this.val/this.max1 ;
             let a = map  (this.val , 0, this.max1*1.2 , 255 , 0) ;
             fill(255,69,255-a, 255) ;
             stroke(255,69,0);
@@ -261,10 +263,10 @@ class GameMap {
             fill('white');
             textAlign(CENTER);
             textSize(16);
-            text(round(v*100/255,2) , this.xc , this.yc - this.r);
+            text(round(this.val/100,2) , this.xc , this.yc - this.r);
         }
         if (this.dp.dp.value() == 'MODE 2') {
-            let v = 255*this.val/this.max2 ;
+            //let v = 255*this.val/this.max2 ;
             let a = map  (this.val , 0, this.max2*1.2 , 255 , 0) ;
             fill(255,69,255-a, 255) ;
             stroke(255,69,0);
@@ -276,7 +278,7 @@ class GameMap {
             fill('white');
             textAlign(CENTER);
             textSize(16);
-            text(round(v*100/255,2) , this.xc , this.yc - this.r);
+            text(round(this.val/100,2) , this.xc , this.yc - this.r);
         }
     }
 
