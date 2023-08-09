@@ -178,3 +178,4 @@ function BlinkerType3(){
     isBlink = ! isBlink ;
   }
 
+  
