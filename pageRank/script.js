@@ -3,8 +3,8 @@ var networkGrapgh = {
         {
             id: 1,
             degree: 2,
-            xPosition: 300,
-            yPosition: 30
+            xPosition: 50,
+            yPosition: 50
         },
         {
             id: 2,
@@ -15,56 +15,56 @@ var networkGrapgh = {
         {
             id: 3,
             degree: 5,
-            xPosition: 400,
+            xPosition: 200,
             yPosition: 100
         },
         {
             id: 4,
             degree: 6,
-            xPosition: 280,
-            yPosition: 150
+            xPosition: 70,
+            yPosition: 140
         },
         {
             id: 5,
             degree: 1,
-            xPosition: 450,
-            yPosition: 150
+            xPosition: 300,
+            yPosition: 30
         },
         {
             id: 6,
             degree: 11,
             xPosition: 450,
-            yPosition: 300
+            yPosition: 200
         },
         {
             id: 7,
             degree: 9,
             xPosition: 250,
-            yPosition: 330
+            yPosition: 240
         },
         {
             id: 8,
             degree: 18,
-            xPosition: 400,
-            yPosition: 400
+            xPosition: 480,
+            yPosition: 480
         },
         {
             id: 9,
             degree: 7,
-            xPosition: 50,
+            xPosition: 70,
             yPosition: 450
         },
         {
             id: 10,
             degree: 14,
-            xPosition: 400,
-            yPosition: 500
+            xPosition: 300,
+            yPosition: 380
         },
         {
             id: 11,
             degree: 10,
-            xPosition: 280,
-            yPosition: 550
+            xPosition: 200,
+            yPosition: 510
         }
     ],
     edges: [
@@ -74,8 +74,11 @@ var networkGrapgh = {
 
 function setup() {
     createCanvas(600, 600);
+    networkGrapgh["vertexs"].sort((a, b) =>{
+        return a.degree - b.degree;
+    });
     for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
-        ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], (i+1) * 20, (i+1) * 20);
+        ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], (i+1) * 17, (i+1) * 17);
         createP(networkGrapgh["vertexs"][i]["degree"]).position(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"] - 15);
     }
     for (let i = 0; i < networkGrapgh["edges"].length; i++){
