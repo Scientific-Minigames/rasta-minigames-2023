@@ -85,7 +85,7 @@ function setup() {
 function draw() {
   showBackground();
   showLogos(width * 0.01, height * 0.82, height * 0.12);
-  showDescription(width * 0.965, height * 0.8, 'قالب بازی‌ها', 'سیدعلی حسینی');
+  showDescription(width * 0.965, height * 0.8, 'Convolution and Pooling', 'سیدعلی حسینی');
   if (imgArray)
     showPixeledImage(imgOffset, imgOffset, imgArray, imgSize / 28);
   showFilters(width / 2 - kernelSize / 2, 0, height, width / 16);
@@ -126,13 +126,18 @@ function showFilter(filter, size, x, y) {
   for (let i=0; i < filter.length; i++) { 
     for (let j=0; j < filter[0].length; j++) {
       stroke(0);
-      strokeWeight(1);
+      strokeWeight(size / filter.length / 20);
       fill(255);
       square(i * size / filter.length, j * size / filter.length, size / filter.length);
       // showing filter[i][j] with 2 decimal points, if its integer, it will be shown as integer
       fill(0);
       noStroke();
-      text(filter[j][i].toFixed(2), (i + 0.5) * size / filter.length, (j + 0.5) * size / filter.length);
+      if (Number.isInteger(filter[j][i])) {
+        text(filter[j][i], (i + 0.5) * size / filter.length, (j + 0.5) * size / filter.length);
+      }
+      else {
+        text(filter[j][i].toFixed(2), (i + 0.5) * size / filter.length, (j + 0.5) * size / filter.length);
+      }
     }
   }
   translate(-x, -y);
@@ -140,7 +145,7 @@ function showFilter(filter, size, x, y) {
 
 function showPooling(pooling, size, x, y) {
   translate(x, y);
-  strokeWeight(1);
+  strokeWeight(size / 3 / 20);
   stroke(0);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -166,7 +171,7 @@ function showFilters(x, y, ySize, kernelSize) {
     filterCoordinates.push([x, y + (convolutions.length + i) * (stepSize + kernelSize) + stepSize, kernelSize]);
   }
   stroke(255, 0, 0);
-  strokeWeight(2);
+  strokeWeight(kernelSize / 20);
   noFill();
   translate(-x, -y);
   if (currentFilter != null) {
@@ -203,7 +208,7 @@ function applyFilter() {
 function showPixeledImage(x, y, image, pixelSize) {
   translate(x, y);
   stroke(0);
-  strokeWeight(14 / image.length);
+  strokeWeight(pixelSize / 5);
   for (let i=0; i < image.length; i++) {
     for (let j=0; j < image[0].length; j++) {
       fill(image[j][i]);
@@ -249,7 +254,7 @@ function showDescription(x, y, gameName, developerName) {
   fill(0);
 
   textSize(nameSize);
-  text(gameName, 0 - nameSize * 0.25, h);
+  text(gameName, 0, h);
   h += nameSize;
 
   let schoolSize = height * 0.06;
