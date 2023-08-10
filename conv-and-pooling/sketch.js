@@ -8,7 +8,8 @@ let kamvaLogo;
 let images;
 let imgSize;
 let imgArray;
-let filteredImage;
+let kernelSize;
+let filteredArray;
 let imageSrc;
 
 // buttons
@@ -35,7 +36,9 @@ let convolutions = [
 ];
 poolings = ['max', 'average', 'min'];
 let filterCoordinates = [];
-let currentFilter= 0;
+let currentFilter = null;
+
+let numSamples = 20;
 
 function preload() {
     // loading background and logos
@@ -45,10 +48,9 @@ function preload() {
   images = [];
   for (let i = 0; i < 10; i++) {
     images.push([]);
-    for (let j = 1; j <= 10; j++) {
+    for (let j = 1; j <= numSamples; j++) {
       path = 'data/' + i + '/' + j + '.png';
       let img = loadImage(path);
-      img.loadPixels();
       images[i].push(img);
     }
   }
@@ -56,15 +58,15 @@ function preload() {
 
 function setup() {
   for (let i = 0; i < 10; i++) {
-    for (let j = 1; j <= 10; j++) {
-      images[i][j - 1].loadPixels();
+    for (let j = 0; j < numSamples; j++) {
+      images[i][j].loadPixels();
     }
   }
   textFont('bkamran'); // default font for our minigames
   createCanvas(windowWidth, windowWidth * aspectRatio); // aspect ratio 4x3 works better in kamva
-  // showBackground();
-  imgSize = width * 0.2;
+  imgSize = width * 0.3;
   imgOffset = width * 0.05;
+  kernelSize = width / 16;
   
   for (let i=0; i < 10; i++) {
     if (buttons.length != 10) {
@@ -72,13 +74,11 @@ function setup() {
       button.mouseClicked(() => {
         getRandomPath(i);
         showPixeledImage(imgOffset, (height - imgSize) / 2, imgArray, imgSize / 28);
+        applyFilter();
       })
       buttons.push(button);
     }
     buttons[i].position(imgOffset + i * imgSize / 10, (height + imgSize) / 2 + imgOffset / 3);
-  }
-  if (!imgArray) {
-    getRandomPath(0);
   }
 }
 
@@ -86,15 +86,27 @@ function draw() {
   showBackground();
   showLogos(width * 0.01, height * 0.82, height * 0.12);
   showDescription(width * 0.965, height * 0.8, 'قالب بازی‌ها', 'سیدعلی حسینی');
-  showPixeledImage(imgOffset, (height - imgSize) / 2, imgArray, imgSize / 28);
-  showFilters(width / 2 - width / 20, 0, height, width / 16);
-  noLoop();
+  if (imgArray)
+    showPixeledImage(imgOffset, imgOffset, imgArray, imgSize / 28);
+  showFilters(width / 2 - kernelSize / 2, 0, height, width / 16);
+  moveButtons();
+  if (filteredArray) {
+    showPixeledImage(width - imgSize - imgOffset, imgOffset, filteredArray, imgSize / filteredArray.length);
+  }
+  // noLoop();
 }
 
+function moveButtons() {
+  for (let i=0; i < buttons.length; i++) {
+    buttons[i].position(imgOffset + i * imgSize / 10, imgSize + imgOffset * 4 / 3);
+    buttons[i].size(imgSize / 10, imgSize / 10);
+    buttons[i].style('align', 'center');
+    buttons[i].style('font-size', imgSize / 15 + 'px');
+  }
+}
 
 function getRandomPath(num) {
-  let sample = int(Math.random() * 10 + 1);
-  path = 'data/' + num + '/' + sample + '.png';
+  let sample = int(Math.random() * numSamples);
   // images[num][sample].loadPixels();
   imgArray = [];
   for (let i=0; i < 28; i++) {
@@ -103,8 +115,7 @@ function getRandomPath(num) {
       imgArray[i].push(images[num][sample].pixels[(i * 28 + j) * 4]);
     }
   }
-  console.log(path);
-  return path;
+  return;
 }
 
 function showFilter(filter, size, x, y) {
@@ -114,9 +125,8 @@ function showFilter(filter, size, x, y) {
   textSize(size/3.5);
   for (let i=0; i < filter.length; i++) { 
     for (let j=0; j < filter[0].length; j++) {
-      // c = Math.floor(filter[j][i] * 255)
-      // fill(color(c, c, c));
       stroke(0);
+      strokeWeight(1);
       fill(255);
       square(i * size / filter.length, j * size / filter.length, size / filter.length);
       // showing filter[i][j] with 2 decimal points, if its integer, it will be shown as integer
@@ -130,9 +140,11 @@ function showFilter(filter, size, x, y) {
 
 function showPooling(pooling, size, x, y) {
   translate(x, y);
+  strokeWeight(1);
+  stroke(0);
   fill(255);
   textAlign(CENTER, CENTER);
-  textSize(size / 3);
+  textSize(size / 4);
   square(0, 0, size);
   fill(0);
   noStroke();
@@ -153,7 +165,13 @@ function showFilters(x, y, ySize, kernelSize) {
     showPooling(poolings[i], kernelSize, 0, (convolutions.length + i) * (stepSize + kernelSize) + stepSize);
     filterCoordinates.push([x, y + (convolutions.length + i) * (stepSize + kernelSize) + stepSize, kernelSize]);
   }
+  stroke(255, 0, 0);
+  strokeWeight(2);
+  noFill();
   translate(-x, -y);
+  if (currentFilter != null) {
+    square(filterCoordinates[currentFilter][0], filterCoordinates[currentFilter][1], filterCoordinates[currentFilter][2]);
+  }
 }
 
 
@@ -164,23 +182,22 @@ function mouseClicked() {
       && mouseY > filterCoordinates[i][1]
       && mouseY < filterCoordinates[i][1] + filterCoordinates[i][2]) {
       currentFilter = i;
-      // draw red square around the filter
-      draw();
-      stroke(255, 0, 0);
-      strokeWeight(2);
-      noFill();
-      square(filterCoordinates[i][0], filterCoordinates[i][1], filterCoordinates[i][2]);
-      if (i < convolutions.length) {
-        filteredArray = convolute(imgArray, convolutions[currentFilter]);
-        showPixeledImage(width * 0.7, (height - imgSize) / 2, filteredArray , imgSize / 26);
-      } else {
-        filteredArray = pooling(imgArray, poolings[currentFilter - convolutions.length]);
-        showPixeledImage(width * 0.7, (height - imgSize) / 2, filteredArray , imgSize / 14);
-      }
+      applyFilter();
       break;
     }
   }
+}
 
+function applyFilter() {
+  if (currentFilter == null || imgArray == null) {
+    filteredArray = null;
+    return;
+  }
+  if (currentFilter < convolutions.length) {
+    filteredArray = convolute(imgArray, convolutions[currentFilter]);
+  } else {
+    filteredArray = pooling(imgArray, poolings[currentFilter - convolutions.length]);
+  }
 }
 
 function showPixeledImage(x, y, image, pixelSize) {
@@ -198,7 +215,9 @@ function showPixeledImage(x, y, image, pixelSize) {
 {
 function windowResized() {
   resizeCanvas(windowWidth, windowWidth * aspectRatio);
-  setup()
+  imgSize = width * 0.3;
+  imgOffset = width * 0.05;
+  kernelSize = width / 16;
   draw();
 }
 
