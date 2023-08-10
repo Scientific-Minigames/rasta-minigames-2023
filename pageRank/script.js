@@ -114,11 +114,6 @@ function setup() {
     option2.setAttribute("value", 2);
     option1.innerHTML = "degree of neighbors";
     select.appendChild(option2);
-    let option3 = document.createElement("option");
-    option1.setAttribute("value", 3);
-    option1.innerHTML = "page rank algorithm";
-    select.appendChild(option3);
-    form.appendChild(select);
     let btn = document.createElement("button");
     btn.innerHTML = "choose game mode";
 
