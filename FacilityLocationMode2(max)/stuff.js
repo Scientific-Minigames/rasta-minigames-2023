@@ -83,7 +83,7 @@ class Gamepoint {
 
 
 class GameMap {
-    constructor(n , r, x , y , w , h , dropdown , dl , add ){
+    constructor(n , r, x , y , w , h  , dl , add ){
         this.n = n ;
         this.r = r ;
         this.x = x ;
@@ -94,7 +94,7 @@ class GameMap {
         this.max1 = n * sqrt(sq(w)+sq(h)) ;
         this.max2 = sqrt(sq(w)+sq(h)) ;
         this.val = 0 ;
-        this.dp = dropdown ;
+        //this.dp = dropdown ;
         
         this.points = [] ;
         this.lstx = [] ;
@@ -118,18 +118,10 @@ class GameMap {
         let x0 = this.xc ;
         let y0 = this.yc ;
         this.val = 0 ;
-        if (this.dp.dp.value() == 'MODE 1'){
-            for (let i = 0 ; i < this.points.length ; i++){
-                let v = sqrt(sq(this.points[i].x - x0) + sq(this.points[i].y - y0)) ;
-                this.val += v ;          
-            }
-        }
-        if (this.dp.dp.value() == 'MODE 2'){
-            for (let i = 0 ; i <  this.points.length ; i++){
-                let v = sqrt(sq(this.points[i].x - x0) + sq(this.points[i].y - y0)) ;
-                this.val = max(this.val, v);
-            }  
-        }
+        for (let i = 0 ; i <  this.points.length ; i++){
+            let v = sqrt(sq(this.points[i].x - x0) + sq(this.points[i].y - y0)) ;
+            this.val = max(this.val, v);
+        }  
     }
 
     getPoints(){
@@ -250,36 +242,19 @@ class GameMap {
         }
 
         this.calVal();
-        if (this.dp.dp.value() == 'MODE 1') {
-            //let v = 255*this.val/this.max1 ;
-            let a = map  (this.val , 0, this.max1*1.2 , 255 , 0) ;
-            fill(255,69,255-a, 255) ;
-            stroke(255,69,0);
-            strokeWeight(3);
-            ellipse ( this.xc  , this.yc , this.r , this.r );
-            fill('black') ;
-            noStroke();
-            rect (this.xc  - this.r - 4 , this.yc - 2*this.r + 5 , this.r*2 + 5 , this.r) ;
-            fill('white');
-            textAlign(CENTER);
-            textSize(16);
-            text(round(this.val/100,2) , this.xc , this.yc - this.r);
-        }
-        if (this.dp.dp.value() == 'MODE 2') {
-            //let v = 255*this.val/this.max2 ;
-            let a = map  (this.val , 0, this.max2*1.2 , 255 , 0) ;
-            fill(255,69,255-a, 255) ;
-            stroke(255,69,0);
-            strokeWeight(3);
-            ellipse ( this.xc  , this.yc , this.r , this.r );
-            fill('black') ;
-            noStroke();
-            rect (this.xc  - this.r - 4 , this.yc - 2*this.r + 5 , this.r*2 + 5 , this.r) ;
-            fill('white');
-            textAlign(CENTER);
-            textSize(16);
-            text(round(this.val/100,2) , this.xc , this.yc - this.r);
-        }
+        //let v = 255*this.val/this.max1 ;
+        let a = map  (this.val , 0, this.max1*1.2 , 255 , 0) ;
+        fill(255,69,255-a, 255) ;
+        stroke(255,69,0);
+        strokeWeight(3);
+        ellipse ( this.xc  , this.yc , this.r , this.r );
+        fill('black') ;
+        noStroke();
+        rect (this.xc  - this.r - 4 , this.yc - 2*this.r + 5 , this.r*2 + 5 , this.r) ;
+        fill('white');
+        textAlign(CENTER);
+        textSize(16);
+        text(round(this.val/100,2) , this.xc , this.yc - this.r);
     }
 
     show(n) {
