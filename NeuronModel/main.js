@@ -31,7 +31,7 @@ const SIZE = 1 ;
 
 let landscape , rasta , kamva , sigmoid , step , relu ; 
 
-const selectOptions = ['Step Function','Sigmoid Functionk' , 'ReLU (Rectified Linear Unit)'] ;
+const selectOptions = ['تابع اول','تابع دوم' , 'تابع سوم'] ;
 let  selectImages = [step , sigmoid , relu] ;
 let isBlink = false ;
 let blinkerType = 1 ;
@@ -47,7 +47,7 @@ function setup() {
   slideri3 = new Myslider( 'input 3','in' , XS , YS+200 , 0 , 1 ,0.1 , 0.3 , WS - 150 , 10);
   slider3 = new Myslider( '' , 'w' , XS , YS+230 , 0 , 1 , 0.01 , 0.3  , WS - 150 , 10);
   //sliderb = new Myslider( 'bias' , 'b' , XS , YS+300 , 0 , 1 , 0.1 , 0.3  , WS - 150 , 10);
-  dropdown = new Mydropdown('Activation functions : ' , XS , YS + 320 , 160 , 30 , selectOptions , selectImages);
+  dropdown = new Mydropdown('تابع مورد استفاده : ' , XS , YS + 320 , 160 , 30 , selectOptions , selectImages);
   dropdown.getOptions( 3);
   OnOFF = createButton( 'ON/OFF (blinker) ');
   OnOFF.position(XS , YS + 372);
