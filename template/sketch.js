@@ -55,7 +55,7 @@ function showDescription(x, y, gameName, developerName) {
 
   let schoolSize = height * 0.07;
   textSize(schoolSize);
-  text('مدرسه تاسبتانه رستا ۱۴۰۲', 0 + schoolSize, h);
+  text('مدرسه تابستانه رستا ۱۴۰۲', 0 + schoolSize, h);
   h += schoolSize * 1.1;
 
   let devSize = height * 0.04;
