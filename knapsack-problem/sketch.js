@@ -6,8 +6,8 @@ let rastaLogo;
 let kamvaLogo;
 
 let ITEM_WIDTH = 50;
-let ITEM_HEIGHT = 10;
-let STACK_SIZE = 40;
+let ITEM_HEIGHT = 0.3;
+let STACK_SIZE = 800;
 
 let colors = [
   '#819f71',
@@ -41,13 +41,13 @@ function preload() {
 function setup() {
   stack = [];
   items = [
-    [8, 20],
-    [4, 30],
-    [12, 5],
-    [5, 10],
-    [5, 10],
-    [3, 5],
-    [7, 30],
+    [100, 30],
+    [100, 25],
+    [300, 40],
+    [300, 35],
+    [400, 65],
+    [600, 75],
+    [700, 95],
   ];
   for (let i=0; i < items.length; i++) {
     items[i].push(colors[i]);
@@ -70,13 +70,16 @@ function draw() {
 function showDottedLines() {
   bot = height / 2;
   setLineDash([5, 5]);
-  for (let i=0; i < 15; i++) {
+  for (let i=0; i < 800; i += 100) {
     y = bot - ITEM_HEIGHT * i;
     strokeWeight((i % 5 == 0)? 1.5: 0.25);
     line(0 + 30, y, width - 10, y);
+    preSize = textSize();
+    textSize(25);
     if (i % 5 == 0) {
       text(i, 15, y + 4);
     }
+    textSize(preSize);
   }
   setLineDash([]);
 }
@@ -121,11 +124,15 @@ function showStack() {
 
 function mouseClicked(){
   if (mouseY < 0.6 * height) {
+    console.log('here1');
+    console.log(mouseX, mouseY);
     for (let i=0; i < items.length; i++) {
       if (items[i] == null) continue;
       let xc = spacing + i * (spacing + ITEM_WIDTH) + ITEM_WIDTH / 2;
       let yc = (height - items[i][0] * ITEM_HEIGHT) / 2
-      if (checkInside(items[i][0], xc, yc)) {
+      console.log(xc, yc);
+      if (checkVerticalInside(items[i][0], xc, yc)) {
+        console.log('hereee');
         if (addToStack(items[i])) {
           console.log(i);
           items[i] = null;
@@ -138,7 +145,7 @@ function mouseClicked(){
     for (let i=0; i < stack.length; i++) {
       xc = left + stack[i][0] * ITEM_HEIGHT / 2;
       yc = 0.6 * height + ITEM_WIDTH / 2;
-      if (checkInside(stack[i][0], xc, yc)) {
+      if (checkHorizontalInside(stack[i][0], xc, yc)) {
         let item = stack.splice(i, 1)[0];
         addToItems(item);
         return;
@@ -156,7 +163,7 @@ function showVerticalItem(height, value, c, x, y) {
   textSize(23);
   textAlign(CENTER);
   // text(value + '$', x + ITEM_WIDTH/2, y - ITEM_HEIGHT * height / 2 + 6);
-  text(value + '$', x + ITEM_WIDTH/2, y + 16);
+  text(value, x + ITEM_WIDTH/2, y + 16);
 }
 
 function showHorizontalItem(height, value, c, x, y) {
@@ -166,11 +173,17 @@ function showHorizontalItem(height, value, c, x, y) {
   fill(0);
   textSize(23);
   textAlign(CENTER);
-  text(value + '$', x + ITEM_HEIGHT * height / 2, y + ITEM_WIDTH / 2 + 6);
+  text(value, x + ITEM_HEIGHT * height / 2, y + ITEM_WIDTH / 2 + 6);
 }
 
 
-function checkInside(height, x, y) {
+function checkVerticalInside(height, x, y) {
+  if (Math.abs(mouseY - y) > height * ITEM_HEIGHT / 2) return false;
+  if (Math.abs(mouseX - x) > ITEM_WIDTH/2) return false;
+  return true;
+}
+
+function checkHorizontalInside(height, x, y) {
   if (Math.abs(mouseY - y) > ITEM_WIDTH/2) return false;
   if (Math.abs(mouseX - x) > height * ITEM_HEIGHT / 2) return false;
   return true;
@@ -187,12 +200,13 @@ function getTotal() {
 }
 
 function showText() {
+  textAlign(CENTER)
   textFont("bkamran");
   textSize(50);
   text('کوله پشتی', 200, height * 0.6 + ITEM_WIDTH / 2 + 15)
   textSize(40);
-  text('ارزش کل: ' + getTotal()[1], width/2, height - 100);
-  text('ظرفیت باقیمانده: ' + (STACK_SIZE - getTotal()[0]), width/2, height - 60);
+  text('ارزش کل: ' + getTotal()[1] + ' واحد مس', width/2 - 15, height - 100);
+  text('بودجه باقیمانده: ' + (STACK_SIZE - getTotal()[0]), width/2 + 15, height - 60);
   
 }
 
