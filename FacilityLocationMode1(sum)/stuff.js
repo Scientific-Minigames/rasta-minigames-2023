@@ -5,7 +5,7 @@ class Mydropdown {
       this.y = y0 ;
       this.h = h ;
       this.w = w ;
-      this.textsize = 16 ;
+      this.textsize = 20 ;
       
       // create dp
       this.dp = createSelect();

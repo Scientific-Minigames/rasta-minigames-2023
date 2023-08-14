@@ -30,10 +30,10 @@ const cols = [
   const HM = 500 ;
   const SIZE = 1 ;
   
-  const selectOptions = ['Off Center','On Center'] ;
+  const selectOptions = ['On Center' , 'Off Center'] ;
   
   let landscape , landscape0 , rasta , kamva ; 
-  let isBlink = false ;
+  let isBlink = true ;
   let blinkerType = 1 ;
 
 
@@ -42,15 +42,15 @@ const cols = [
   function setup() {
     createCanvas(landscape0.width , landscape0.height);
     // ------ slider -------
-    slider = new Myslider( 'Lighter Loc' ,'Offset From Center' , XM , YM , -1 , 1 , 0.01 , 0 , WM , 10);
+    slider = new Myslider( 'مکان نور' ,'انحراف از مرکز' , XM , YM , -1 , 1 , 0.01 , 0 , WM , 10);
     // ------ dp ------
     dropdown = new Mydropdown('Center Mode : ' , XB+10 , YB+20 , 200 , 30 , selectOptions);
     dropdown.getOptions(2);
     // ------ on/off button ------
-    OnOFF = createButton( 'ON/OFF (blinker) ');
-    OnOFF.position(XB+10 , YB +80);
-    OnOFF.size(WB - XB - 30 , 32) ;
-    OnOFF.mousePressed(changeIsBlink) ;
+    //OnOFF = createButton( 'ON/OFF (blinker) ');
+    //OnOFF.position(XB+10 , YB +80);
+    //OnOFF.size(WB - XB - 30 , 32) ;
+    //OnOFF.mousePressed(changeIsBlink) ;
     // ------blinker buttons------
     //wave
     //type1 = createButton('blinker 1 (wave)') ;
@@ -90,6 +90,9 @@ const cols = [
     drawModel(XM , YM , WM , HM , 1 , dropdown , slider , isBlink , blinkerType);
     showLight();
     // ------sliders------
+    //noFill();
+    //stroke('black');
+    //rect(XM+WM/2 - 80 , YM+40 , 170 , 40 , 10);
     slider.show();
     //slider.slider.hide();
     // ------dp------
@@ -119,7 +122,7 @@ const cols = [
     tint(255 , 200) ;
     //image(light , XM + WM/2 + WM/2*slider.slider.value());
     imageMode(CENTER);
-    image(light , XM + WM/2 + WM/2*slider.slider.value(), YM + 40 , light.width*0.04 , light.height*0.04);
+    image(light , XM + WM/2 + WM/2*slider.slider.value(), YM + 60 , light.width*0.02 , light.height*0.02);
     imageMode(CORNER);
   }
 

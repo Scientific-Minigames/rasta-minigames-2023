@@ -30,9 +30,9 @@ class Myslider {
     fill (0);
     text(this.name , this.x , this.y + this.h + 3);
     textSize(15);
-    text(this.slider.value() , this.x + this.w  + 60 , this.y + this.h + this.textsize + 7);
+    //text(this.slider.value() , this.x + this.w  + 60 , this.y + this.h + this.textsize + 7);
     textSize(18);
-    text(join([this.extra , ':'] ,'  ') , this.x + this.w  + 15 , this.y + this.h + this.textsize + 7);
+    text(join([this.extra , ':' , this.slider.value() ] ,'  ') , this.x + this.w  + 15 , this.y + this.h + this.textsize + 7);
   }
 }
   
@@ -46,11 +46,11 @@ class Mydropdown {
     this.y = y0 ;
     this.h = h ;
     this.w = w ;
-    this.textsize = 18 ;
+    this.textsize = 23 ;
     
     // create dp
     this.dp = createSelect();
-    this.dp.position(x0 + this.textsize + textWidth(name) + 50 , y0);
+    this.dp.position(x0+20 , y0);//this.textsize + textWidth(name) + 50 , y0);
     this.dp.size(w , h);
     fill(255) ;
     this.dp.style('background-color', 'white');
@@ -93,7 +93,7 @@ class Mydropdown {
     textAlign(LEFT);
     fill ( 0);
     //textFont(font0);
-    text(this.name , this.x , this.y + this.h - 6 );
+    text(this.name , this.x+this.w+50 , this.y + this.h - 6 );
     //this.blinker.getFrq(pow(this.output,1.7));
     this.blinker.getFrq(this.output*3);
 
@@ -292,7 +292,7 @@ else {
 drawArrow (slider1.slider.value(), xa , ya , wa , ha , wta , hta , ra , 0);
 drawArrow (slider2.slider.value(), xa , ya , wa , ha , wta , hta , ra , tnj);
 drawArrow (slider3.slider.value(), xa , ya , wa , ha , wta , hta , ra , -tnj);  
-drawArrow ('out',xaf , ya , wa * 1.2 , ha , wta * 1.5 , hta , ra , 0);
+drawArrow ('خروجی',xaf , ya , wa * 1.2 , ha , wta * 1.5 , hta , ra , 0);
 }
 
 function spottyCircle(txt , x, y , r , Col , strokeCol ) {

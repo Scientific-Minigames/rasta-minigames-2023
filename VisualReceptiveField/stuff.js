@@ -76,10 +76,10 @@ class Mydropdown {
     }
 
     Output (val) {
-      if (this.dp.value() == this.options[0]){
+      if (this.dp.value() == this.options[1]){
         this.output = sqrt(sq(val)) ;
       }
-      if (this.dp.value() == this.options[1]){
+      if (this.dp.value() == this.options[0]){
         this.output = 1 - sqrt(sq(val)) ;
       }
     }
@@ -231,15 +231,15 @@ function drawModel(x0 , y0 , w , h , size , dropdown , slider , isBlink , blinke
         spottyRect('R' , xr + i *(dr+wr) , yr , wr , hr , "#64A6DE" ,"#2E2C51");
         spottyRect('R' , xr + w - wr - i *(dr+wr) , yr , wr , hr , "#64A6DE" ,"#2E2C51");
         textSize(14);
-        text('\n Center' , xr + i *(dr+wr)+wr/2+5 , yr);
-        text('\n Center' , xr + w - wr/2 - i *(dr+wr)+5 , yr);
+        text('\n مرکزی' , xr + i *(dr+wr)+wr/2+5 , yr);
+        text('\n مرکزی' , xr + w - wr/2 - i *(dr+wr)+5 , yr);
       }
       else {
         spottyRect('R' , xr + i *(dr+wr) , yr , wr , hr , "#5E878C" ,"#2E2C51");
         spottyRect('R' , xr + w - wr - i *(dr+wr) , yr , wr , hr , "#5E878C" ,"#2E2C51");
         textSize(14);
-        text('\n offCenter' , xr + i *(dr+wr)+wr/2+5 , yr);
-        text('\n offCenter' , xr + w - wr/2 - i *(dr+wr)+5 , yr);
+        text('\n بیرونی' , xr + i *(dr+wr)+wr/2+5 , yr);
+        text('\n بیرونی' , xr + w - wr/2 - i *(dr+wr)+5 , yr);
       }
     }
 

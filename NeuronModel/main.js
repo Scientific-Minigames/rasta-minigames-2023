@@ -33,26 +33,26 @@ let landscape , rasta , kamva , sigmoid , step , relu ;
 
 const selectOptions = ['تابع اول','تابع دوم' , 'تابع سوم'] ;
 let  selectImages = [step , sigmoid , relu] ;
-let isBlink = false ;
+let isBlink = true ;
 let blinkerType = 1 ;
 
 
 
 function setup() {
   createCanvas(landscape.width, landscape.height);
-  slideri1 = new Myslider( 'input 1' ,'in' , XS , YS , 0 , 1 , 0.1 , 0.3 , WS - 150 , 10);
-  slider1 = new Myslider( '' , 'w' , XS , YS+30 , 0 , 1 , 0.01 , 0.3 , WS - 150 , 10);
-  slideri2 = new Myslider( 'input 2' ,'in', XS , YS+100 , 0 , 1 , 0.1 , 0.3 , WS - 150 , 10);
-  slider2 = new Myslider( '' ,'w' , XS , YS+130 , 0 , 1 , 0.01 , 0.3  , WS - 150 , 10);
-  slideri3 = new Myslider( 'input 3','in' , XS , YS+200 , 0 , 1 ,0.1 , 0.3 , WS - 150 , 10);
-  slider3 = new Myslider( '' , 'w' , XS , YS+230 , 0 , 1 , 0.01 , 0.3  , WS - 150 , 10);
+  slideri1 = new Myslider( 'ورودی 1' ,'ورودی' , XS , YS , 0 , 1 , 0.1 ,0.5 , WS - 150 , 10);
+  slider1 = new Myslider( '' , 'وزن' , XS , YS+30 , -1 , 1 , 0.01 , 0 , WS - 150 , 10);
+  slideri2 = new Myslider( 'ورودی 2' ,'ورودی', XS , YS+100 , 0 , 1 , 0.1 , 0.5 , WS - 150 , 10);
+  slider2 = new Myslider( '' ,'وزن' , XS , YS+130 , -1 , 1 , 0.01 , 0  , WS - 150 , 10);
+  slideri3 = new Myslider( 'ورودی 3','ورودی' , XS , YS+200 , 0 , 1 ,0.1 , 0.5 , WS - 150 , 10);
+  slider3 = new Myslider( '' , 'وزن' , XS , YS+230 , -1 , 1 , 0.01 , 0  , WS - 150 , 10);
   //sliderb = new Myslider( 'bias' , 'b' , XS , YS+300 , 0 , 1 , 0.1 , 0.3  , WS - 150 , 10);
-  dropdown = new Mydropdown('تابع مورد استفاده : ' , XS , YS + 320 , 160 , 30 , selectOptions , selectImages);
+  dropdown = new Mydropdown(join([':','تابع مورد استفاده'] , ' '), XS , YS + 320 , 160 , 30 , selectOptions , selectImages);
   dropdown.getOptions( 3);
-  OnOFF = createButton( 'ON/OFF (blinker) ');
-  OnOFF.position(XS , YS + 372);
-  OnOFF.size(120 , 22) ;
-  OnOFF.mousePressed(changeIsBlink) ;
+  //OnOFF = createButton( 'ON/OFF (blinker) ');
+  //OnOFF.position(XS , YS + 372);
+  //OnOFF.size(120 , 22) ;
+  //OnOFF.mousePressed(changeIsBlink) ;
   // ------blinker buttons------
   //type1 = createButton('blinker 1 (wave)') ;
   //type1.position(XS , YS + 420);
@@ -121,13 +121,13 @@ function showLogos() {
 
 function showFunction(dropdown ) {
   if (dropdown.dp.value() == selectOptions[0] ){
-    image(step , 200, 420 ,170 , 170);
+    image(step , XS+20 , YS + 370 ,170 , 170);
   }
   if (dropdown.dp.value() == selectOptions[1] ){
-    image(sigmoid , 200, 420 ,170 , 170);
+    image(sigmoid , XS+20 , YS + 370 ,170 , 170);
   }
   if (dropdown.dp.value() == selectOptions[2] ){
-    image(relu , 200, 420 ,170 , 170);
+    image(relu ,XS+20 , YS + 370 ,170 , 170);
   }
 
 }
