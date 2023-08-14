@@ -1,37 +1,37 @@
 var networkGrapgh = {
     vertexs: [
         {
-            id: 1,
+            id: 2,
             degree: 2,
             xPosition: 50,
             yPosition: 50
         },
         {
-            id: 2,
+            id: 3,
             degree: 3,
             xPosition: 450,
             yPosition: 50
         },
         {
-            id: 3,
+            id: 4,
             degree: 5,
             xPosition: 200,
             yPosition: 100
         },
         {
-            id: 4,
+            id: 5,
             degree: 6,
             xPosition: 70,
             yPosition: 140
         },
         {
-            id: 5,
+            id: 1,
             degree: 1,
             xPosition: 300,
             yPosition: 30
         },
         {
-            id: 6,
+            id: 9,
             degree: 11,
             xPosition: 450,
             yPosition: 200
@@ -43,13 +43,13 @@ var networkGrapgh = {
             yPosition: 240
         },
         {
-            id: 8,
+            id: 11,
             degree: 18,
             xPosition: 480,
             yPosition: 480
         },
         {
-            id: 9,
+            id: 6,
             degree: 7,
             xPosition: 70,
             yPosition: 450
@@ -61,28 +61,75 @@ var networkGrapgh = {
             yPosition: 380
         },
         {
-            id: 11,
+            id: 8,
             degree: 10,
             xPosition: 200,
             yPosition: 510
         }
     ],
     edges: [
-        [2, 1], [2, 3], [1, 3], [1, 4], [3, 4], [3, 5], [5, 2], [4, 5], [4, 6], [6, 7], [7, 8], [7, 11], [8, 10], [9, 11], [10, 11], [11, 8] 
+        [1, 3], [2, 4], [2, 5], [3, 2], [3, 4], [4, 1], [4, 5], [5, 1], [5, 7], [5, 9], [6, 8], [6, 11], [7, 5], [7, 8], [7, 11], [8, 11], [9, 7], [10, 8], [11, 6], [11, 10], [11, 9]
     ]
 }
 
 function setup() {
     createCanvas(600, 600);
-    networkGrapgh["vertexs"].sort((a, b) =>{
-        return a.degree - b.degree;
-    });
     for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
-        ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], (i+1) * 17, (i+1) * 17);
+        ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], (networkGrapgh["vertexs"][i]["id"]) * 17, (networkGrapgh["vertexs"][i]["id"]) * 17);
         createP(networkGrapgh["vertexs"][i]["degree"]).position(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"] - 15);
     }
     for (let i = 0; i < networkGrapgh["edges"].length; i++){
-        line(networkGrapgh["vertexs"][networkGrapgh["edges"][i][0] - 1]["xPosition"], networkGrapgh["vertexs"][networkGrapgh["edges"][i][0] - 1]["yPosition"], networkGrapgh["vertexs"][networkGrapgh["edges"][i][1] - 1]["xPosition"], networkGrapgh["vertexs"][networkGrapgh["edges"][i][1] - 1]["yPosition"]);
+        let center1X, center1Y, center2X, center2Y;
+        let r1 = networkGrapgh["edges"][i][0] * 8.5;
+        let r2 = networkGrapgh["edges"][i][1] * 8.5;
+        for(let j = 0; j < networkGrapgh["vertexs"].length; j++){
+            if (networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][0]){
+                center1X = networkGrapgh["vertexs"][j]["xPosition"];
+                center1Y = networkGrapgh["vertexs"][j]["yPosition"];
+            }
+            else if(networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][1]){
+                center2X = networkGrapgh["vertexs"][j]["xPosition"];
+                center2Y = networkGrapgh["vertexs"][j]["yPosition"];
+            }
+        }
+        let slope = (center2Y - center1Y)/(center2X - center1X);
+        let theta = Math.abs(Math.atan(slope));
+        let cos = Math.abs(Math.cos(theta));
+        let sin = Math.abs(Math.sin(theta));
+        let point1X, point1Y, point2X, point2Y;
+        if (center1Y > center2Y){
+            point1Y = center1Y - r1 * sin;
+            point2Y = center2Y + r2 * sin;
+        }
+        else{
+            point1Y = center1Y + r1 * sin;
+            point2Y = center2Y - r2 * sin;
+        }
+        if(center1X > center2X){
+            point1X = center1X - r1 * cos;
+            point2X = center2X + r2 * cos;
+        }
+        else{
+            point1X = center1X + r1 * cos;
+            point2X = center2X - r2 * cos;
+        }
+        line(point1X, point1Y, point2X, point2Y);
+        if(center1Y > center2Y && center1X < center2X){
+            line(point2X, point2Y, point2X + 10 * Math.cos(theta-60), point2Y - 10 * Math.sin(theta-60));
+            line(point2X, point2Y, point2X + 10 * Math.cos(theta + 60), point2Y - 10 * Math.sin(theta + 60));
+        }
+        else if(center1Y > center2Y && center1X > center2X){
+            line(point2X, point2Y, point2X + 10 * Math.cos(theta -120), point2Y + 10 * Math.sin(theta -120));
+            line(point2X, point2Y, point2X + 10 * Math.cos(theta + 120), point2Y + 10 * Math.sin(theta + 120));
+        }
+        else if(center1Y < center2Y && center1X > center2X){
+            line(point2X, point2Y, point2X + 10 * Math.cos(theta -120), point2Y - 10 * Math.sin(theta -120));
+            line(point2X, point2Y, point2X + 10 * Math.cos(theta + 120), point2Y - 10 * Math.sin(theta + 120));
+        }
+        else if(center1Y < center2Y && center1X < center2X){
+            line(point2X, point2Y, point2X - 10 * Math.cos(theta -120), point2Y - 10 * Math.sin(theta -120));
+            line(point2X, point2Y, point2X - 10 * Math.cos(theta + 120), point2Y - 10 * Math.sin(theta + 120));
+        }
     }
 }
   
