@@ -50,7 +50,7 @@ const cols = [
     createCanvas(W, H);
 
     // ------DP------
-    dropdown = new Mydropdown('Optimization Variable :' , XB + 15 , YB +40 , 150 , 30 , selectOptions);
+    dropdown = new Mydropdown(join([ 'متغیر بهینه سازی' ,':', 'مجموع فواصل'], ' ') , XB + 50 , YB +40 , 150 , 30 , selectOptions);
     dropdown.getOptions( 2);
   
     
@@ -98,10 +98,10 @@ const cols = [
     rect( XB ,  YB , WB , HB , R);
 
     // ------dp------
-    rect(XB , YB+40 , WB , 30);
+    rect(XB , YB+38 , WB , 30);
     dropdown.show();
     dropdown.dp.hide();
-    text('Sum Of Distances' ,  XB + 190, YB +60 );
+    //text('مجموع فواصل' ,  XB + 190, YB +60 );
     
     // ------input box------
     fill('black');

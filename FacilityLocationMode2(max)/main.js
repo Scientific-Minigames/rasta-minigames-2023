@@ -50,7 +50,7 @@ function setup() {
   createCanvas(W, H);
 
   // ------DP------
-  dropdown = new Mydropdown('Optimization Variable :' , XB + 20 , YB +40 , 150 , 30 , selectOptions);
+  dropdown = new Mydropdown(join([ 'متغیر بهینه سازی' ,':', 'بیشترین فاصله'], ' ') , XB + 50 , YB +40 , 150 , 30 , selectOptions);
   dropdown.getOptions( 2);
 
   
@@ -98,14 +98,15 @@ function draw() {
   rect( XB ,  YB , WB , HB , R);
 
   // ------dp------
-  rect(XB , YB+40 , WB , 30);
+  rect(XB , YB+38 , WB , 30);
   dropdown.show();
   dropdown.dp.hide();
-  text('Maximum Distances' ,  XB + 190, YB +60 );
+  //text('بیشترین فاصله' ,  XB +50, YB +60 );
   
   // ------input box------
   fill('black');
   //stroke('black');
+  textSize(16);
   text('Number Of Points : ', inp.x-150 , inp.y + 15);
 
   // ------gm------
