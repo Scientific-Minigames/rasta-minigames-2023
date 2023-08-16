@@ -3,208 +3,235 @@ var networkGrapgh = {
         {
             id: 1,
             degree: 1,
-            neighborsDegree: 16,
+            neighborsDegree: 11,
             xPosition: 250,
             yPosition: 270,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 2,
-            degree: 2,
-            neighborsDegree: 12,
+            degree: 1,
+            neighborsDegree: 8,
             xPosition: 50,
             yPosition: 50,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 3,
             degree: 3,
-            neighborsDegree: 44,
+            neighborsDegree: 10,
             xPosition: 320,
             yPosition: 150,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 4,
-            degree: 4,
-            neighborsDegree: 35,
+            degree: 0,
+            neighborsDegree: 4,
             xPosition: 550,
             yPosition: 80,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 5,
             degree: 5,
-            neighborsDegree: 42,
+            neighborsDegree: 10,
             xPosition: 180,
             yPosition: 100,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 6,
-            degree: 6,
-            neighborsDegree: 8,
+            degree: 2,
+            neighborsDegree: 7,
             xPosition: 50,
             yPosition: 200,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 7,
-            degree: 7,
-            neighborsDegree: 37,
+            degree: 0,
+            neighborsDegree: 8,
             xPosition: 50,
             yPosition: 550,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 8,
-            degree: 8,
-            neighborsDegree: 15,
+            degree: 1,
+            neighborsDegree: 3,
             xPosition: 400,
             yPosition: 50,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 9,
-            degree: 9,
-            neighborsDegree: 46,
+            degree: 2,
+            neighborsDegree: 4,
             xPosition: 50,
             yPosition: 500,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 10,
-            degree: 10,
-            neighborsDegree: 48,
+            degree: 3,
+            neighborsDegree: 6,
             xPosition: 150,
             yPosition: 550,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 11,
-            degree: 11,
-            neighborsDegree: 27,
+            degree: 1,
+            neighborsDegree: 5,
             xPosition: 50,
             yPosition: 300,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 12,
-            degree: 12,
-            neighborsDegree: 26,
+            degree: 0,
+            neighborsDegree: 6,
             xPosition: 300,
             yPosition: 50,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 13,
-            degree: 13,
-            neighborsDegree: 20,
+            degree: 2,
+            neighborsDegree: 8,
             xPosition: 250,
             yPosition: 50,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 14,
-            degree: 14,
-            neighborsDegree: 28,
+            degree: 1,
+            neighborsDegree: 6,
             xPosition: 250,
             yPosition: 450,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 15,
-            degree: 15,
-            neighborsDegree: 39,
+            degree: 3,
+            neighborsDegree: 4,
             xPosition: 550,
             yPosition: 270,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 16,
-            degree: 16,
-            neighborsDegree: 103,
+            degree: 2,
+            neighborsDegree: 5,
             xPosition: 550,
             yPosition: 400,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 17,
-            degree: 17,
+            degree: 1,
             neighborsDegree: 8,
             xPosition: 300,
             yPosition: 300,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 18,
-            degree: 18,
-            neighborsDegree: 51,
+            degree: 3,
+            neighborsDegree: 7,
             xPosition: 200,
             yPosition: 400,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 19,
-            degree: 19,
-            neighborsDegree: 51,
+            degree: 1,
+            neighborsDegree: 6,
             xPosition: 450,
             yPosition: 300,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 20,
-            degree: 20,
-            neighborsDegree: 23,
+            degree: 1,
+            neighborsDegree: 2,
             xPosition: 450,
             yPosition: 200,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 21,
-            degree: 21,
-            neighborsDegree: 39,
+            degree: 0,
+            neighborsDegree: 4,
             xPosition: 550,
             yPosition: 550,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 22,
-            degree: 22,
-            neighborsDegree: 47,
+            degree: 1,
+            neighborsDegree: 5,
             xPosition: 300,
             yPosition: 550,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 23,
-            degree: 23,
-            neighborsDegree: 108,
+            degree: 2,
+            neighborsDegree: 6,
             xPosition: 400,
             yPosition: 550,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 24,
-            degree: 24,
-            neighborsDegree: 51,
+            degree: 3,
+            neighborsDegree: 5,
             xPosition: 370,
             yPosition: 400,
-            counter: 0
+            counter: 0,
+            score: 0
         },
         {
             id: 25,
-            degree: 25,
-            neighborsDegree: 63,
+            degree: 2,
+            neighborsDegree: 7,
             xPosition: 450,
             yPosition: 450,
-            counter: 0
+            counter: 0,
+            score: 0
         }
     ],
     edges: [
         [1, 2], [1, 3], [1, 5], [2, 5], [2, 6], [3, 5], [3, 13], [4, 15], [5, 17], [6, 1], [7, 9], [7, 10], [7, 18], [8, 3], [9, 10], [10, 18], [11, 9], [12, 5], [13, 5], [14, 10], [16, 19], [17, 3], [18, 11], [18, 14], [19, 15], [19, 20], [20, 4], [21, 16], [21, 23], [22, 23], [22, 24], [23, 16], [23, 24], [23, 25],[24, 22], [25, 24]
     ]
 }
+
+var scoreColors = ["#e6ffec", "#d1ffdd", "#c4ffd3", "#b6fcc7","#acfcc0", "#9dfcb5", "#89f5a4", "#79e895", "#69db86", "#5acc76", "#4cc269", "#3fb55d", "#37b055", "#2ea34b", "#269642", "#1e8a39", "#198233", "#137d2d", "#0d7527", "#086e21", "#03631b", "#015716", "#004010", "#00300c", "#001c07"];
 
 var counter = 0;
 var terminated = false;
@@ -243,23 +270,27 @@ function setup() {
             while(ps[0]){
                 ps[0].parentNode.removeChild(ps[0]);
             }
+            let slider = document.getElementById("sliderDiv");
+            if(slider != null){
+                slider.parentNode.removeChild(slider);
+            }
             fill("white");
             for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
-                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"],  30, 30);
-                createP(networkGrapgh["vertexs"][i]["degree"]).position(networkGrapgh["vertexs"][i]["xPosition"] + 2, networkGrapgh["vertexs"][i]["yPosition"] - 2);
+                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], (networkGrapgh["vertexs"][i]["degree"] + 1) * 17, (networkGrapgh["vertexs"][i]["degree"] + 1) * 17);
+                createP(networkGrapgh["vertexs"][i]["degree"]).position(networkGrapgh["vertexs"][i]["xPosition"] + 2, networkGrapgh["vertexs"][i]["yPosition"] + 4);
             }
             for (let i = 0; i < networkGrapgh["edges"].length; i++){
-                let center1X, center1Y, center2X, center2Y;
-                let r1 = 15;
-                let r2 = 15;
+                let center1X, center1Y, center2X, center2Y, r1, r2;
                 for(let j = 0; j < networkGrapgh["vertexs"].length; j++){
                     if (networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][0]){
                         center1X = networkGrapgh["vertexs"][j]["xPosition"];
                         center1Y = networkGrapgh["vertexs"][j]["yPosition"];
+                        r1 = (networkGrapgh["vertexs"][j]["degree"] + 1) * 8.5;
                     }
                     else if(networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][1]){
                         center2X = networkGrapgh["vertexs"][j]["xPosition"];
                         center2Y = networkGrapgh["vertexs"][j]["yPosition"];
+                        r2 = (networkGrapgh["vertexs"][j]["degree"] + 1) * 8.5;
                     }
                 }
                 let slope = (center2Y - center1Y)/(center2X - center1X);
@@ -309,22 +340,27 @@ function setup() {
             while(ps[0]){
                 ps[0].parentNode.removeChild(ps[0]);
             }
+            let slider = document.getElementById("sliderDiv");
+            if(slider != null){
+                slider.parentNode.removeChild(slider);
+            }
             fill("white");
             for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
-                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], 30, 30);
-                createP(networkGrapgh["vertexs"][i]["neighborsDegree"]).position(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"] - 5);
+                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], networkGrapgh["vertexs"][i]["neighborsDegree"] * 5, networkGrapgh["vertexs"][i]["neighborsDegree"] * 5);
+                createP(networkGrapgh["vertexs"][i]["neighborsDegree"]).position(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"] + 5);
             }
             for (let i = 0; i < networkGrapgh["edges"].length; i++){
                 let center1X, center1Y, center2X, center2Y, r1, r2;
-                r1 = r2 = 15;
                 for(let j = 0; j < networkGrapgh["vertexs"].length; j++){
                     if (networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][0]){
                         center1X = networkGrapgh["vertexs"][j]["xPosition"];
                         center1Y = networkGrapgh["vertexs"][j]["yPosition"];
+                        r1 = networkGrapgh["vertexs"][j]["neighborsDegree"] * 2.5;
                     }
                     else if(networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][1]){
                         center2X = networkGrapgh["vertexs"][j]["xPosition"];
                         center2Y = networkGrapgh["vertexs"][j]["yPosition"];
+                        r2 = networkGrapgh["vertexs"][j]["neighborsDegree"] * 2.5;
                     }
                 }
                 let slope = (center2Y - center1Y)/(center2X - center1X);
@@ -373,9 +409,27 @@ function setup() {
             while(ps[0]){
                 ps[0].parentNode.removeChild(ps[0]);
             }
+            let oldSlider = document.getElementById("sliderDiv");
+            if(oldSlider != null){
+                oldSlider.parentNode.removeChild(oldSlider);
+            }
+            let sliderDiv = document.createElement("div");
+            sliderDiv.setAttribute("id", "sliderDiv");
+            let slider = document.createElement("input");
+            slider.setAttribute("type", "range");
+            slider.setAttribute("min", "1");
+            slider.setAttribute("max", "10");
+            slider.setAttribute("step", "1");
+            slider.setAttribute("value", "1");
+            slider.setAttribute("id", "slider");
+            sliderDiv.appendChild(slider);
+            let sliderP = document.createElement("p");
+            sliderP.setAttribute("id", "rangeValue");
+            sliderDiv.appendChild(sliderP);
+            document.getElementById("main").appendChild(sliderDiv);
             for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
                 ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"],  30, 30);
-                createP(networkGrapgh["vertexs"][i]["counter"]).position(networkGrapgh["vertexs"][i]["xPosition"] + 2, networkGrapgh["vertexs"][i]["yPosition"] - 2);
+                createP(networkGrapgh["vertexs"][i]["counter"]).position(networkGrapgh["vertexs"][i]["xPosition"] + 2, networkGrapgh["vertexs"][i]["yPosition"] + 40);
             }
             for (let i = 0; i < networkGrapgh["edges"].length; i++){
                 let center1X, center1Y, center2X, center2Y;
@@ -432,7 +486,7 @@ function setup() {
             }
             counter = 0;
             terminated = false;
-            setTimeout(initializePageRank, 1000);
+            setTimeout(initializePageRank, parseInt(document.getElementById("slider").value) * 1000);
         }
     };
 
@@ -447,16 +501,16 @@ function draw() {
 function initializePageRank(){
     let selectedNode = newRandomNode();
     updateScores(selectedNode);
-    setTimeout(() => pageRankLoop(selectedNode), 1000);
+    setTimeout(() => pageRankLoop(selectedNode), parseInt(document.getElementById("slider").value) * 1000);
 }
 
 function pageRankLoop(selectedNode){
-    resetColor(selectedNode);
+    resetColor();
     if(! terminated){
         selectedNode = selectRandomNeighbor(selectedNode);
         if(selectedNode != undefined){
             updateScores(selectedNode);
-            setTimeout(()=>pageRankLoop(selectedNode), 1000);
+            setTimeout(()=>pageRankLoop(selectedNode), parseInt(document.getElementById("slider").value) * 1000);
         }
     }
 }
@@ -474,8 +528,10 @@ function updateScores(selectedNode){
         ps[0].parentNode.removeChild(ps[0]);
     }
     for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
-        createP(networkGrapgh["vertexs"][i]["counter"] / counter).position(networkGrapgh["vertexs"][i]["xPosition"] + 2, networkGrapgh["vertexs"][i]["yPosition"] - 2);
+        networkGrapgh["vertexs"][i]["score"] = (networkGrapgh["vertexs"][i]["counter"] / counter).toFixed(2);
+        createP(networkGrapgh["vertexs"][i]["score"]).position(networkGrapgh["vertexs"][i]["xPosition"] - 2, networkGrapgh["vertexs"][i]["yPosition"] + 30);
     }
+    updateColors(selectedNode);
 }
 
 
@@ -484,10 +540,11 @@ function setColor(selectedNode){
     ellipse(selectedNode["xPosition"], selectedNode["yPosition"], 30, 30);
 }
 
-function resetColor(selectedNode){
+function resetColor(){
     fill("white");
-    ellipse(selectedNode["xPosition"], selectedNode["yPosition"], 30, 30);
-    
+    for(let i = 0; i < networkGrapgh["vertexs"].length; i++){
+        ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], 30, 30);
+    }
 }
 
 function selectRandomNeighbor(selectedNode){
@@ -503,4 +560,23 @@ function selectRandomNeighbor(selectedNode){
         }
     }
     return list[Math.floor(Math.random() * (list.length))];
+}
+
+function updateColors(selectedNode){
+    networkGrapgh["vertexs"].sort((a, b) =>{
+        return a.score - b.score;
+    });
+    let colorIndex = 0;
+    for(let i = 0; i < networkGrapgh["vertexs"].length; i++){
+        if(i != 0 && networkGrapgh["vertexs"][i]["score"] > networkGrapgh["vertexs"][i - 1]["score"]){
+            colorIndex += 1;
+        }
+        fill(scoreColors[colorIndex]);
+        if(networkGrapgh["vertexs"][i] === selectedNode){
+            ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], 20, 20);
+        }
+        else{
+            ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], 30, 30);
+        }
+    }
 }

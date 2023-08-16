@@ -2,133 +2,133 @@ var networkGrapgh = {
     vertexs: [
         {
             id: 1,
-            degree: 1,
-            neighborsDegree: 25,
+            degree: 2,
+            neighborsDegree: 16,
             xPosition: 270,
             yPosition: 100
         },
         {
             id: 2,
-            degree: 2,
-            neighborsDegree: 12,
+            degree: 1,
+            neighborsDegree: 8,
             xPosition: 240,
             yPosition: 50
         },
         {
             id: 3,
             degree: 3,
-            neighborsDegree: 44,
+            neighborsDegree: 11,
             xPosition: 440,
             yPosition: 150
         },
         {
             id: 4,
-            degree: 4,
-            neighborsDegree: 23,
+            degree: 0,
+            neighborsDegree: 7,
             xPosition: 550,
             yPosition: 200
         },
         {
             id: 5,
-            degree: 5,
-            neighborsDegree: 31,
+            degree: 4,
+            neighborsDegree: 13,
             xPosition: 300,
             yPosition: 50
         },
         {
             id: 6,
-            degree: 6,
-            neighborsDegree: 8,
+            degree: 2,
+            neighborsDegree: 7,
             xPosition: 170,
             yPosition: 120
         },
         {
             id: 7,
-            degree: 7,
-            neighborsDegree: 62,
+            degree: 5,
+            neighborsDegree: 25,
             xPosition: 40,
             yPosition: 250
         },
         {
             id: 8,
-            degree: 8,
-            neighborsDegree: 53,
+            degree: 3,
+            neighborsDegree: 8,
             xPosition: 450,
             yPosition: 230
         },
         {
             id: 9,
-            degree: 9,
-            neighborsDegree: 78,
+            degree: 6,
+            neighborsDegree: 29,
             xPosition: 170,
             yPosition: 200
         },
         {
             id: 10,
-            degree: 10,
-            neighborsDegree: 59,
+            degree: 5,
+            neighborsDegree: 25,
             xPosition: 70,
             yPosition: 350
         },
         {
             id: 11,
-            degree: 11,
-            neighborsDegree: 58,
+            degree: 5,
+            neighborsDegree: 25,
             xPosition: 70,
             yPosition: 120
         },
         {
             id: 12,
-            degree: 12,
-            neighborsDegree: 26,
+            degree: 0,
+            neighborsDegree: 12,
             xPosition: 540,
             yPosition: 100
         },
         {
             id: 13,
-            degree: 13,
-            neighborsDegree: 20,
+            degree: 2,
+            neighborsDegree: 7,
             xPosition: 400,
             yPosition: 70
         },
         {
             id: 14,
-            degree: 14,
-            neighborsDegree: 55,
+            degree: 5,
+            neighborsDegree: 25,
             xPosition: 120,
             yPosition: 500
         },
         {
             id: 15,
-            degree: 15,
-            neighborsDegree: 47,
+            degree: 4,
+            neighborsDegree: 4,
             xPosition: 520,
             yPosition: 330
         },
         {
             id: 16,
-            degree: 16,
-            neighborsDegree: 34,
+            degree: 0,
+            neighborsDegree: 5,
             xPosition: 500,
             yPosition: 490
         },
         {
             id: 17,
-            degree: 17,
-            neighborsDegree: 35,
+            degree: 3,
+            neighborsDegree: 17,
             xPosition: 300,
             yPosition: 200
         },
         {
             id: 18,
-            degree: 18,
-            neighborsDegree: 51,
+            degree: 4,
+            neighborsDegree: 29,
             xPosition: 200,
             yPosition: 380
         },
         {
             id: 19,
-            degree: 19,
+            degree: 1,
             neighborsDegree: 39,
             xPosition: 380,
             yPosition: 400
@@ -169,8 +169,8 @@ function setup() {
                 ps[0].parentNode.removeChild(ps[0]);
             }
             for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
-                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], networkGrapgh["vertexs"][i]["id"] * 8, networkGrapgh["vertexs"][i]["id"] * 8);
-                createP(networkGrapgh["vertexs"][i]["degree"]).position(networkGrapgh["vertexs"][i]["xPosition"] + 2, networkGrapgh["vertexs"][i]["yPosition"] - 2);
+                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], (networkGrapgh["vertexs"][i]["degree"] + 1) * 14, (networkGrapgh["vertexs"][i]["degree"] + 1) * 14);
+                createP(networkGrapgh["vertexs"][i]["degree"]).position(networkGrapgh["vertexs"][i]["xPosition"] + 2, networkGrapgh["vertexs"][i]["yPosition"] + 2);
             }
             for (let i = 0; i < networkGrapgh["edges"].length; i++){
                 let center1X, center1Y, center2X, center2Y;
@@ -180,10 +180,12 @@ function setup() {
                     if (networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][0]){
                         center1X = networkGrapgh["vertexs"][j]["xPosition"];
                         center1Y = networkGrapgh["vertexs"][j]["yPosition"];
+                        r1 = (networkGrapgh["vertexs"][j]["degree"] + 1) * 7;
                     }
                     else if(networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][1]){
                         center2X = networkGrapgh["vertexs"][j]["xPosition"];
                         center2Y = networkGrapgh["vertexs"][j]["yPosition"];
+                        r2 = (networkGrapgh["vertexs"][j]["degree"] + 1) * 7;
                     }
                 }
                 let slope = (center2Y - center1Y)/(center2X - center1X);
@@ -236,8 +238,8 @@ function setup() {
                 return a.neighborsDegree - b.neighborsDegree;
             });
             for (let i = 0; i < networkGrapgh["vertexs"].length; i++){
-                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], (i+1) * 5, (i+1) * 5);
-                createP(networkGrapgh["vertexs"][i]["neighborsDegree"]).position(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"] - 5);
+                ellipse(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"], networkGrapgh["vertexs"][i]["neighborsDegree"] + 20, networkGrapgh["vertexs"][i]["neighborsDegree"] + 20);
+                createP(networkGrapgh["vertexs"][i]["neighborsDegree"]).position(networkGrapgh["vertexs"][i]["xPosition"], networkGrapgh["vertexs"][i]["yPosition"] + 5);
             }
             for (let i = 0; i < networkGrapgh["edges"].length; i++){
                 let center1X, center1Y, center2X, center2Y, r1, r2;
@@ -245,12 +247,12 @@ function setup() {
                     if (networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][0]){
                         center1X = networkGrapgh["vertexs"][j]["xPosition"];
                         center1Y = networkGrapgh["vertexs"][j]["yPosition"];
-                        r1 = j * 2.5;
+                        r1 = networkGrapgh["vertexs"][j]["neighborsDegree"] / 2 + 10;
                     }
                     else if(networkGrapgh["vertexs"][j]["id"] === networkGrapgh["edges"][i][1]){
                         center2X = networkGrapgh["vertexs"][j]["xPosition"];
                         center2Y = networkGrapgh["vertexs"][j]["yPosition"];
-                        r2 = j * 2.5;
+                        r2 = networkGrapgh["vertexs"][j]["neighborsDegree"] / 2 + 10;
                     }
                 }
                 let slope = (center2Y - center1Y)/(center2X - center1X);
