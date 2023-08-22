@@ -234,7 +234,7 @@ let wb = 110 * size ;
 let hb = 30 *size ;
 
 // draw biases
-spottyRect('' ,xb , yb , wb , hb ,"#64A6DE" ,"#64A6DE00");
+// spottyRect('' ,xb , yb , wb , hb ,"#64A6DE" ,"#64A6DE00");
 textAlign(CENTER);
 textSize(20);
 fill("#2E2C51");
