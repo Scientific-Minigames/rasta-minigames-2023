@@ -233,7 +233,7 @@ let yb = y0 + rm + 10 ;
 let wb = 110 * size ;
 let hb = 30 *size ;
 
-// draw bias
+// draw biases
 spottyRect('' ,xb , yb , wb , hb ,"#64A6DE" ,"#64A6DE00");
 textAlign(CENTER);
 textSize(20);
