@@ -486,7 +486,7 @@ function setup() {
             }
             counter = 0;
             terminated = false;
-            setTimeout(initializePageRank, parseInt(document.getElementById("slider").value) * 1000);
+            setTimeout(initializePageRank, (11 - parseInt(document.getElementById("slider").value)) * 1000);
         }
     };
 
@@ -501,7 +501,7 @@ function draw() {
 function initializePageRank(){
     let selectedNode = newRandomNode();
     updateScores(selectedNode);
-    setTimeout(() => pageRankLoop(selectedNode), parseInt(document.getElementById("slider").value) * 1000);
+    setTimeout(() => pageRankLoop(selectedNode), (11 - parseInt(document.getElementById("slider").value)) * 1000);
 }
 
 function pageRankLoop(selectedNode){
@@ -510,7 +510,7 @@ function pageRankLoop(selectedNode){
         selectedNode = selectRandomNeighbor(selectedNode);
         if(selectedNode != undefined){
             updateScores(selectedNode);
-            setTimeout(()=>pageRankLoop(selectedNode), parseInt(document.getElementById("slider").value) * 1000);
+            setTimeout(()=>pageRankLoop(selectedNode), (11 - parseInt(document.getElementById("slider").value)) * 1000);
         }
     }
 }

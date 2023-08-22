@@ -514,7 +514,7 @@ function setup() {
                 }
             }
             terminated = false;
-            setTimeout(initializePageRank, parseInt(document.getElementById("slider").value) * 1000);
+            setTimeout(initializePageRank,(11 - parseInt(document.getElementById("slider").value)) * 1000);
         }
         else if(select.selectedIndex === 3){
             counter = 0;
@@ -626,10 +626,10 @@ function initializePageRank(kFactor = ""){
     let selectedNode = newRandomNode();
     updateScores(selectedNode);
     if(kFactor === ""){
-        setTimeout(() => pageRankLoop(selectedNode), parseInt(document.getElementById("slider").value) * 1000);
+        setTimeout(() => pageRankLoop(selectedNode), (11 - parseInt(document.getElementById("slider").value)) * 1000);
     }
     else{
-        setTimeout(() => {pageRankLoop(selectedNode, kFactor)}, parseInt(document.getElementById("slider").value) * 1000);
+        setTimeout(() => {pageRankLoop(selectedNode, kFactor)}, (11 - parseInt(document.getElementById("slider").value)) * 1000);
     }
 }
 
@@ -640,19 +640,21 @@ function pageRankLoop(selectedNode, kFactor = ""){
             selectedNode = selectRandomNeighbor(selectedNode);
             if(selectedNode != undefined){
                 updateScores(selectedNode);
-                setTimeout(()=>pageRankLoop(selectedNode), parseInt(document.getElementById("slider").value) * 1000);
+                setTimeout(()=>pageRankLoop(selectedNode), (11 - parseInt(document.getElementById("slider").value)) * 1000);
             }
-        }
-        else if (kFactor != 1){
-            selectedNode = selectRandomNeighbor(selectedNode);
-            if(selectedNode === undefined){
-                return initializePageRank(parseInt(document.getElementById("k").value));
-            }
-            updateScores(selectedNode);
-            setTimeout(()=>pageRankLoop(selectedNode, kFactor - 1), parseInt(document.getElementById("slider").value) * 1000);
         }
         else{
-            initializePageRank(parseInt(document.getElementById("k").value));
+            if(Math.random() <= kFactor){
+                selectedNode = selectRandomNeighbor(selectedNode);
+                if(selectedNode === undefined){
+                    return initializePageRank(parseInt(document.getElementById("k").value));
+                }
+                updateScores(selectedNode);
+                setTimeout(()=>pageRankLoop(selectedNode, kFactor), (11 - parseInt(document.getElementById("slider").value)) * 1000);
+            }
+            else{
+                initializePageRank(parseInt(document.getElementById("k").value));
+            }
         }
     }
 }
