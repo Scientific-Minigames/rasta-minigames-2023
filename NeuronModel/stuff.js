@@ -239,7 +239,7 @@ textAlign(CENTER);
 textSize(20);
 fill("#2E2C51");
 strokeWeight(3);
-text('bias is 0', xb  , yb+6);
+// text('bias is 0', xb  , yb+6);
 
 
 
