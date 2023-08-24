@@ -40,9 +40,9 @@ let blinkerType = 1 ;
 
 function setup() {
   createCanvas(landscape.width, landscape.height);
-  slideri2 = new Myslider( 'ورودی 1' ,'ورودی' , XS , YS , 0 , 1 , 0.1 ,0.5 , WS - 150 , 10);
+  slideri1 = new Myslider( 'ورودی 1' ,'ورودی' , XS , YS , 0 , 1 , 0.1 ,0.5 , WS - 150 , 10);
   slider2 = new Myslider( '' , 'وزن' , XS , YS+30 , -1 , 1 , 0.01 , 0 , WS - 150 , 10);
-  slideri1 = new Myslider( 'ورودی 2' ,'ورودی', XS , YS+100 , 0 , 1 , 0.1 , 0.5 , WS - 150 , 10);
+  slideri2 = new Myslider( 'ورودی 2' ,'ورودی', XS , YS+100 , 0 , 1 , 0.1 , 0.5 , WS - 150 , 10);
   slider1 = new Myslider( '' ,'وزن' , XS , YS+130 , -1 , 1 , 0.01 , 0  , WS - 150 , 10);
   slideri3 = new Myslider( 'ورودی 3','ورودی' , XS , YS+200 , 0 , 1 ,0.1 , 0.5 , WS - 150 , 10);
   slider3 = new Myslider( '' , 'وزن' , XS , YS+230 , -1 , 1 , 0.01 , 0  , WS - 150 , 10);
@@ -50,7 +50,7 @@ function setup() {
   dropdown = new Mydropdown(join([':','تابع مورد استفاده'] , ' '), XS , YS + 320 , 160 , 30 , selectOptions , selectImages);
   dropdown.getOptions( 3);
   //OnOFF = createButton( 'ON/OFF (blinker) ');
-  //OnOFF.position(XS , YS + 372);
+  //OnOFF.position(XS , YS + 372);ß
   //OnOFF.size(120 , 22) ;
   //OnOFF.mousePressed(changeIsBlink) ;
   // ------blinker buttons------
